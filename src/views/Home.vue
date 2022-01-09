@@ -3,7 +3,7 @@
     <div class="panel">
       <div class="panel__profile">
           <h1> PANEL</h1>
-          <h2>Number of updates in lifecycle: {{state.numOfUpdates}}</h2>
+          <h2>Number of updates in lifecycle: {{state.mountedText}}</h2>
           <h2>Name: {{ state.username }}</h2>
           <h2>Date: {{ state.date }}</h2>
           <h2>Entries: {{ calculateEntries }}</h2>
@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import { reactive, computed, onMounted, onUpdated } from 'vue'
+import { reactive, computed, onMounted } from 'vue'
 import Entry from "../components/Entry.vue"
 import { useStore } from 'vuex'
 import Clear from '../components/Clear.vue'
@@ -80,7 +80,7 @@ export default{
     const state = reactive({
       username: 'Guest',
       date: '2022',
-      numOfUpdates : 0,
+      mountedText : '',
       newEntry: {
         entryId: -1,
         entryTitle : '',
@@ -113,11 +113,7 @@ export default{
       console.log(store.getters.entriesList)
     }
     onMounted(()=>{
-      console.log("Home MOUNTED")
-    })
-    onUpdated(()=>{
-      state.entriesList = store.getters.entriesList
-      state.numOfUpdates += 1
+      state.mountedText = 'this text was made onMounted lifecycle hook method!'
     })
     return {
       state,
