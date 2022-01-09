@@ -3,7 +3,7 @@
     <div class="panel">
       <div class="panel__profile">
           <h1> PANEL</h1>
-          <h2>Number of updates in lifecycle: {{state.mountedText}}</h2>
+          <h2>{{state.mountedText}}</h2>
           <h2>Name: {{ state.username }}</h2>
           <h2>Date: {{ state.date }}</h2>
           <h2>Entries: {{ calculateEntries }}</h2>
